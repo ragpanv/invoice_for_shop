@@ -1,0 +1,65 @@
+from tkinter import *
+b,a,c,d,p=1,0,0,30,0
+button1=Button()
+button2=Button()
+e4=Spinbox()
+def check():
+    global a,b,c,d,p
+    global e4
+    p=e4.get()
+    a=a+int(p)
+    b=b+1
+    c=c+1
+    Label(f,width=15,text=b,anchor="w",pady=3,font=("Arial",15)).place(x=0,y=d+35)
+    e1=Entry(f,width=30,font=("Arial",15)).place(x=100,y=d+35)
+    e2=Entry(f,width=15,font=("Arial",15)).place(x=350,y=d+35)
+    e3=Entry(f,width=15,font=("Arial",15))
+    e3.place(x=500,y=d+35)
+    e4=Spinbox(f,from_=1,to_=10000,width=15,font=("Arial",15))
+    e4.place(x=650,y=d+35)
+    button1.place(x=200,y=d+80)
+    button2.place(x=500,y=d+80)
+    d=d+30
+def calculate():
+    global a,b,c,d
+    a=a+int(e4.get())
+    c=c+1
+    button1.destroy()
+    button2.destroy()
+    l=Label(f,text="Total no. of items : "+str(c),width=32,fg='blue',anchor="w",pady=3,font=(15))
+    l.place(x=0,y=d+35)
+    l1=Label(f,text="Total amount : "+str(a),width=32,fg='blue',anchor="w",pady=3,font=(15))
+    l1.place(x=300,y=d+35)
+r=Tk()
+
+r.geometry("800x800")
+r.title("Invoice for shop")
+f=Frame(r,width=800,height=800)
+f.place(x=0,y=0)
+f.propagate(0)
+l=Label(f,text="Sl No.",width=10,fg='blue',anchor="w",pady=3,font=('Georgea',15))
+l.place(x=0,y=0)
+l1=Label(f,text="Name",width=30,fg='blue',anchor="w",pady=3,font=('Georgea',15))
+l1.place(x=100,y=0)
+l2=Label(f,text="Quantity",width=15,fg='blue',anchor="w",pady=3,font=('Georgea',15))
+l2.place(x=350,y=0)
+l3=Label(f,text="Rate",width=20,fg='blue',anchor="w",pady=3,font=('Georgea',15))
+l3.place(x=500,y=0)
+l4=Label(f,text="Total",width=20,fg='blue',anchor="w",pady=3,font=('Georgea',15))
+l4.place(x=700,y=0)
+l5=Label(f,width=10,text="1",fg='blue',anchor="w",pady=3,font=('Georgea',15))
+l5.place(x=0,y=35)
+e1=Entry(f,width=30,font=("Arial",15))
+e1.place(x=100,y=35)
+e2=Entry(f,width=15,font=("Arial",15))
+e2.place(x=350,y=35)
+e3=Entry(f,width=15,font=("Arial",15))
+e3.place(x=500,y=35)
+e4=Spinbox(f,from_=1,to_=10000,width=15,font=("Arial",15))
+e4.place(x=650,y=35)
+p=int(e4.get())
+button1=Button(f,fg="white",text="ADD",bg='grey',font=("Arial",16),command=check)
+button1.place(x=200,y=80)
+button2=Button(f,fg="white",text="Total Amount",bg='green',font=("Arial",15),command=calculate)
+button2.place(x=500,y=80)
+r.mainloop()
